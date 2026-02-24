@@ -1,4 +1,4 @@
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./PricingPage.css";
 
@@ -7,7 +7,7 @@ const plans = [
         name: "Self-Hosted",
         price: "Free",
         period: "forever",
-        description: "Full access. Your infrastructure.",
+        description: "Full source code. Host it yourself.",
         cta: "Get Started",
         ctaLink: "/docs",
         ctaStyle: "btn btn-secondary btn-lg",
@@ -15,21 +15,24 @@ const plans = [
         features: [
             { text: "Unlimited agents & teams", included: true },
             { text: "All template agents", included: true },
-            { text: "Task orchestration", included: true },
+            { text: "Task orchestration & views", included: true },
             { text: "Agent chat sessions", included: true },
             { text: "Real-time sync (Convex)", included: true },
             { text: "Full source code (MIT)", included: true },
             { text: "Community support", included: true },
-            { text: "Managed hosting", included: false },
-            { text: "Automatic updates", included: false },
+            { text: "Bring your own OpenClaw instance", included: true },
+            { text: "Bring your own API keys", included: true },
+            { text: "Managed dashboard hosting", included: false },
+            { text: "Managed OpenClaw instance", included: false },
+            { text: "Included AI usage", included: false },
             { text: "Priority support", included: false },
         ],
     },
     {
-        name: "Pro Managed",
+        name: "Pro",
         price: "$9",
         period: "/month",
-        description: "We handle everything. You focus on building.",
+        description: "Managed dashboard. You bring your instance & keys.",
         cta: "Start Free Trial",
         ctaLink: "/dashboard",
         ctaStyle: "btn btn-primary btn-lg",
@@ -37,14 +40,17 @@ const plans = [
         features: [
             { text: "Unlimited agents & teams", included: true },
             { text: "All template agents", included: true },
-            { text: "Task orchestration", included: true },
+            { text: "Task orchestration & views", included: true },
             { text: "Agent chat sessions", included: true },
             { text: "Real-time sync (Convex)", included: true },
             { text: "Full source code (MIT)", included: true },
             { text: "Community support", included: true },
-            { text: "Managed hosting", included: true },
-            { text: "Automatic updates", included: true },
-            { text: "Priority support", included: true },
+            { text: "Bring your own OpenClaw instance", included: true },
+            { text: "Bring your own API keys", included: true },
+            { text: "Managed dashboard hosting", included: true },
+            { text: "Managed OpenClaw instance", included: false },
+            { text: "Included AI usage", included: false },
+            { text: "Priority support", included: false },
         ],
     },
 ];
@@ -57,8 +63,16 @@ export default function PricingPage() {
                     Simple, <span className="gradient-text">transparent</span> pricing
                 </h1>
                 <p className="animate-fade-in-up delay-1">
-                    Open source and free forever. Or let us manage it for the price of a
-                    couple coffees.
+                    Open source and free to self-host. Or let us run Mission Control for
+                    you at $9/month.
+                </p>
+            </div>
+
+            <div className="pricing-byoi-note">
+                <p>
+                    <strong>Bring Your Own Instance &amp; Keys</strong> — All plans require your own
+                    OpenClaw instance and LLM API keys (OpenAI, Anthropic, etc.). Mission Control
+                    is the dashboard — it connects to your existing infrastructure.
                 </p>
             </div>
 
@@ -98,6 +112,23 @@ export default function PricingPage() {
                 ))}
             </div>
 
+            {/* Custom Tier */}
+            <div className="custom-tier">
+                <div className="custom-tier-card glass-card">
+                    <div className="custom-tier-content">
+                        <h3>Custom Setup</h3>
+                        <p>
+                            Need a tailored solution? Custom server configurations,
+                            dedicated infrastructure, SLA guarantees, or white-label
+                            deployment — let's talk.
+                        </p>
+                        <a href="mailto:hello@the-mehdi.com" className="btn btn-secondary btn-lg">
+                            <Mail size={16} /> Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div className="pricing-faq">
                 <h2>Frequently Asked Questions</h2>
                 <div className="faq-grid">
@@ -105,14 +136,24 @@ export default function PricingPage() {
                         <h4>What do I need to get started?</h4>
                         <p>
                             An OpenClaw instance (self-hosted or cloud) and at least one LLM
-                            API key (OpenAI, Anthropic, or any OpenAI-compatible provider).
+                            API key (OpenAI, Anthropic, Google AI, or any OpenAI-compatible
+                            provider). Mission Control connects to these — it doesn't host them.
                         </p>
                     </div>
                     <div className="faq-item">
-                        <h4>Can I switch from self-hosted to managed?</h4>
+                        <h4>What exactly does Mission Control host?</h4>
                         <p>
-                            Yes! Your data is stored in Convex. Just connect your existing
-                            Convex deployment to our managed instance, or export and import.
+                            Mission Control is the agent orchestration dashboard — the web app you
+                            use to create agents, manage tasks, and chat with your team. It connects
+                            to your OpenClaw instance remotely. Your OpenClaw instance stays on your
+                            infrastructure.
+                        </p>
+                    </div>
+                    <div className="faq-item">
+                        <h4>Can I switch from self-hosted to Pro?</h4>
+                        <p>
+                            Yes! Your data is stored in Convex. Migrating is seamless — just
+                            connect your existing Convex deployment to the managed version.
                         </p>
                     </div>
                     <div className="faq-item">
@@ -127,6 +168,14 @@ export default function PricingPage() {
                         <p>
                             OpenAI, Anthropic, Google AI, and any OpenAI-compatible API via
                             custom provider configuration.
+                        </p>
+                    </div>
+                    <div className="faq-item">
+                        <h4>Is this the same as hosting OpenClaw?</h4>
+                        <p>
+                            No. Mission Control is a separate dashboard that connects to your
+                            OpenClaw instance. You set up and manage your OpenClaw instance
+                            independently — Mission Control orchestrates your agents through it.
                         </p>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 
 .pricing-hero {
     text-align: center;
-    padding: var(--space-20) var(--space-6) var(--space-12);
+    padding: var(--space-20) var(--space-6) var(--space-8);
     max-width: 650px;
     margin: 0 auto;
 }
@@ -21,13 +21,36 @@
     color: var(--color-text-secondary);
 }
 
+/* BYOI Note */
+.pricing-byoi-note {
+    max-width: 700px;
+    margin: 0 auto var(--space-8);
+    padding: 0 var(--space-6);
+}
+
+.pricing-byoi-note p {
+    text-align: center;
+    padding: var(--space-4) var(--space-6);
+    background: rgba(124, 92, 252, 0.06);
+    border: 1px solid rgba(124, 92, 252, 0.15);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.pricing-byoi-note strong {
+    color: var(--color-text-primary);
+}
+
+/* Cards */
 .pricing-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-8);
     max-width: 900px;
     margin: 0 auto;
-    padding: var(--space-8) var(--space-6);
+    padding: 0 var(--space-6) var(--space-8);
 }
 
 .pricing-card {
@@ -53,6 +76,7 @@
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .pricing-card-header {
@@ -61,7 +85,7 @@
 
 .pricing-card-header h3 {
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: var(--space-3);
 }
 
@@ -86,6 +110,7 @@
 .pricing-desc {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
+    line-height: 1.5;
 }
 
 .pricing-features {
@@ -118,10 +143,39 @@
     flex-shrink: 0;
 }
 
+/* Custom Tier */
+.custom-tier {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-8);
+}
+
+.custom-tier-card {
+    padding: var(--space-8);
+    text-align: center;
+    background: linear-gradient(135deg, rgba(124, 92, 252, 0.06) 0%, rgba(255, 107, 157, 0.06) 100%);
+    border: 1px solid rgba(124, 92, 252, 0.15);
+}
+
+.custom-tier-content h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+}
+
+.custom-tier-content p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    max-width: 500px;
+    margin: 0 auto var(--space-6);
+    line-height: 1.6;
+}
+
+/* FAQ */
 .pricing-faq {
     max-width: 900px;
     margin: 0 auto;
-    padding: var(--space-16) var(--space-6) var(--space-24);
+    padding: var(--space-12) var(--space-6) var(--space-24);
 }
 
 .pricing-faq h2 {
