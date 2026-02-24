@@ -1,0 +1,26 @@
+/* Dashboard layout */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: var(--space-8);
+  min-height: 100vh;
+  transition: margin-left var(--transition-base);
+}
+
+/* When sidebar is collapsed, adjust margin */
+.dashboard-sidebar.collapsed~.dashboard-main,
+.dashboard-layout:has(.dashboard-sidebar.collapsed) .dashboard-main {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+    padding: var(--space-4);
+  }
+}

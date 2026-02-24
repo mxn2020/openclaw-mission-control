@@ -1,0 +1,68 @@
+.connections-page {
+    animation: fadeIn 0.3s ease-out;
+    max-width: 720px;
+}
+
+.connection-section {
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.connection-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+}
+
+.connection-header h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+}
+
+.connection-header svg {
+    color: var(--color-accent-primary);
+}
+
+.connection-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: 1.5;
+}
+
+.connection-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.field-group label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.custom-provider {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.custom-provider summary {
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-accent-primary);
+}
+
+.connection-actions {
+    display: flex;
+    justify-content: flex-end;
+}

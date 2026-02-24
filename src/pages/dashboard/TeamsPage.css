@@ -1,0 +1,29 @@
+.teams-page {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.teams-empty {
+    text-align: center;
+    padding: var(--space-16);
+}
+
+.teams-empty-icon {
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: center;
+}
+
+.teams-empty h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.teams-empty p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    max-width: 400px;
+    margin: 0 auto var(--space-6);
+    line-height: 1.6;
+}
