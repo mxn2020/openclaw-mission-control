@@ -1,5 +1,6 @@
 import { Check, X, ArrowRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button, Card } from "@geenius-ui/react-css";
 import "./PricingPage.css";
 
 const plans = [
@@ -10,7 +11,7 @@ const plans = [
         description: "Full source code. Host it yourself.",
         cta: "Get Started",
         ctaLink: "/docs",
-        ctaStyle: "btn btn-secondary btn-lg",
+        ctaStyle: "outline",
         highlight: false,
         features: [
             { text: "Unlimited agents & teams", included: true },
@@ -35,7 +36,7 @@ const plans = [
         description: "Managed dashboard. You bring your instance & keys.",
         cta: "Start Free Trial",
         ctaLink: "/dashboard",
-        ctaStyle: "btn btn-primary btn-lg",
+        ctaStyle: "primary",
         highlight: true,
         features: [
             { text: "Unlimited agents & teams", included: true },
@@ -78,9 +79,10 @@ export default function PricingPage() {
 
             <div className="pricing-cards">
                 {plans.map((plan) => (
-                    <div
+                    <Card
                         key={plan.name}
-                        className={`pricing-card glass-card ${plan.highlight ? "highlighted" : ""}`}
+                        className={`pricing-card ${plan.highlight ? "highlighted" : ""}`}
+                        padding="lg"
                     >
                         {plan.highlight && (
                             <div className="pricing-badge">Most Popular</div>
@@ -105,16 +107,18 @@ export default function PricingPage() {
                                 </li>
                             ))}
                         </ul>
-                        <Link to={plan.ctaLink} className={plan.ctaStyle}>
-                            {plan.cta} <ArrowRight size={16} />
+                        <Link to={plan.ctaLink} style={{ display: 'block', width: '100%' }}>
+                            <Button variant={plan.ctaStyle as any} size="lg" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                                {plan.cta} <ArrowRight size={16} style={{ marginLeft: 8 }} />
+                            </Button>
                         </Link>
-                    </div>
+                    </Card>
                 ))}
             </div>
 
             {/* Custom Tier */}
             <div className="custom-tier">
-                <div className="custom-tier-card glass-card">
+                <Card className="custom-tier-card" padding="md">
                     <div className="custom-tier-content">
                         <h3>Custom Setup</h3>
                         <p>
@@ -122,11 +126,11 @@ export default function PricingPage() {
                             dedicated infrastructure, SLA guarantees, or white-label
                             deployment — let's talk.
                         </p>
-                        <a href="mailto:hello@the-mehdi.com" className="btn btn-secondary btn-lg">
-                            <Mail size={16} /> Contact Us
+                        <a href="mailto:hello@the-mehdi.com">
+                            <Button variant="outline" size="lg" icon={<Mail size={16} />}>Contact Us</Button>
                         </a>
                     </div>
-                </div>
+                </Card>
             </div>
 
             <div className="pricing-faq">

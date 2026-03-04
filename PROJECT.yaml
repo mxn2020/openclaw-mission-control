@@ -1,0 +1,13 @@
+id: caac546b-cf2f-4c10-a9a1-b2c91f303a1f
+name: mission-control
+description: Mission Control
+tier: prototype
+lane: oss
+priority: medium
+oss: true
+stack: [typescript, react, convex, vite]
+repo: "https://github.com/mxn2020/mission-control"
+deploy_url: null
+last_active: 2026-02-24
+tags: []
+notes: 

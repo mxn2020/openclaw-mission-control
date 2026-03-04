@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Plus, Filter, LayoutGrid, List, Clock } from "lucide-react";
+import { Plus, Filter, LayoutGrid, List, Clock as ClockIcon } from "lucide-react";
+import { Button, Card, Badge } from "@geenius-ui/react-css";
 import "./TasksPage.css";
 
 type ViewMode = "kanban" | "list" | "timeline";
@@ -38,7 +39,7 @@ const priorityColors: Record<string, string> = {
     low: "var(--color-text-tertiary)",
     medium: "var(--color-info)",
     high: "var(--color-warning)",
-    critical: "var(--color-error)",
+    critical: "var(--color-danger)",
 };
 
 export default function TasksPage() {
@@ -51,72 +52,78 @@ export default function TasksPage() {
                     <h1>Tasks</h1>
                     <p>View and manage all work across your agent team</p>
                 </div>
-                <button className="btn btn-primary">
-                    <Plus size={16} /> New Task
-                </button>
+                <Button variant="primary" icon={<Plus size={16} />}>
+                    New Task
+                </Button>
             </div>
 
             {/* View Toggle */}
-            <div className="tasks-toolbar">
-                <div className="view-toggle">
-                    <button
-                        className={`btn btn-sm ${view === "kanban" ? "btn-primary" : "btn-ghost"}`}
+            <div className="tasks-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+                <div className="view-toggle" style={{ display: 'flex', background: 'var(--color-bg-secondary)', padding: 4, borderRadius: 'var(--radius-md)' }}>
+                    <Button
+                        variant={view === "kanban" ? "primary" : "ghost"}
+                        size="sm"
+                        icon={<LayoutGrid size={14} />}
                         onClick={() => setView("kanban")}
                     >
-                        <LayoutGrid size={14} /> Kanban
-                    </button>
-                    <button
-                        className={`btn btn-sm ${view === "list" ? "btn-primary" : "btn-ghost"}`}
+                        Kanban
+                    </Button>
+                    <Button
+                        variant={view === "list" ? "primary" : "ghost"}
+                        size="sm"
+                        icon={<List size={14} />}
                         onClick={() => setView("list")}
                     >
-                        <List size={14} /> List
-                    </button>
-                    <button
-                        className={`btn btn-sm ${view === "timeline" ? "btn-primary" : "btn-ghost"}`}
+                        List
+                    </Button>
+                    <Button
+                        variant={view === "timeline" ? "primary" : "ghost"}
+                        size="sm"
+                        icon={<ClockIcon size={14} />}
                         onClick={() => setView("timeline")}
                     >
-                        <Clock size={14} /> Timeline
-                    </button>
+                        Timeline
+                    </Button>
                 </div>
-                <button className="btn btn-ghost btn-sm">
-                    <Filter size={14} /> Filters
-                </button>
+                <Button variant="outline" size="sm" icon={<Filter size={14} />}>
+                    Filters
+                </Button>
             </div>
 
             {/* Kanban View */}
             {view === "kanban" && (
-                <div className="kanban-board">
+                <div className="kanban-board" style={{ display: 'flex', gap: 'var(--space-4)', overflowX: 'auto', paddingBottom: 'var(--space-4)' }}>
                     {columns.map((col) => {
                         const tasks = demoTasks.filter((t) => t.status === col.key);
                         return (
-                            <div key={col.key} className="kanban-column">
-                                <div className="kanban-column-header">
-                                    <span className="kanban-dot" style={{ background: col.color }} />
-                                    <h3>{col.label}</h3>
-                                    <span className="kanban-count">{tasks.length}</span>
+                            <div key={col.key} className="kanban-column" style={{ width: 300, flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
+                                <div className="kanban-column-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-3)' }}>
+                                    <span className="kanban-dot" style={{ width: 8, height: 8, borderRadius: '50%', background: col.color }} />
+                                    <h3 style={{ margin: 0, fontSize: 13, fontWeight: 600, color: 'var(--color-text-secondary)' }}>{col.label}</h3>
+                                    <span className="kanban-count" style={{ marginLeft: 'auto', fontSize: 12, fontWeight: 700, background: 'var(--color-bg-secondary)', padding: '2px 8px', borderRadius: 12 }}>{tasks.length}</span>
                                 </div>
-                                <div className="kanban-cards">
+                                <div className="kanban-cards" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                                     {tasks.map((task) => (
-                                        <div key={task.id} className="task-card glass-card">
-                                            <div className="task-card-priority">
+                                        <Card key={task.id} className="task-card" padding="md" style={{ cursor: 'pointer' }}>
+                                            <div className="task-card-priority" style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                                                 <span
                                                     className="priority-dot"
-                                                    style={{ background: priorityColors[task.priority] }}
+                                                    style={{ width: 6, height: 6, borderRadius: '50%', background: priorityColors[task.priority] }}
                                                 />
-                                                <span className="priority-label">{task.priority}</span>
+                                                <span className="priority-label" style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-text-tertiary)', textTransform: 'uppercase' }}>{task.priority}</span>
                                             </div>
-                                            <h4>{task.title}</h4>
+                                            <h4 style={{ margin: '0 0 12px 0', fontSize: 14, fontWeight: 500 }}>{task.title}</h4>
                                             {task.agent && (
-                                                <div className="task-card-agent">
+                                                <div className="task-card-agent" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--color-text-secondary)', background: 'var(--color-bg-secondary)', padding: '4px 8px', borderRadius: 12, width: 'fit-content' }}>
                                                     <span>{task.agentIcon}</span>
                                                     <span>{task.agent}</span>
                                                 </div>
                                             )}
-                                        </div>
+                                        </Card>
                                     ))}
-                                    <button className="kanban-add btn btn-ghost btn-sm">
-                                        <Plus size={14} /> Add task
-                                    </button>
+                                    <Button variant="ghost" size="sm" icon={<Plus size={14} />} style={{ justifyContent: 'center', width: '100%', color: 'var(--color-text-tertiary)' }}>
+                                        Add task
+                                    </Button>
                                 </div>
                             </div>
                         );
@@ -126,27 +133,27 @@ export default function TasksPage() {
 
             {/* List View */}
             {view === "list" && (
-                <div className="tasks-list glass-card">
-                    <div className="tasks-list-header">
+                <Card className="tasks-list" padding="none">
+                    <div className="tasks-list-header" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 2fr) 150px 150px 200px', padding: 'var(--space-3) var(--space-5)', borderBottom: '1px solid var(--color-border)', fontSize: 13, fontWeight: 600, color: 'var(--color-text-secondary)', background: 'var(--color-bg-secondary)' }}>
                         <span className="tl-title">Title</span>
                         <span className="tl-status">Status</span>
                         <span className="tl-priority">Priority</span>
                         <span className="tl-agent">Agent</span>
                     </div>
-                    {demoTasks.map((task) => (
-                        <div key={task.id} className="tasks-list-row">
-                            <span className="tl-title">{task.title}</span>
+                    {demoTasks.map((task, i) => (
+                        <div key={task.id} className="tasks-list-row" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 2fr) 150px 150px 200px', padding: 'var(--space-4) var(--space-5)', borderBottom: i < demoTasks.length - 1 ? '1px solid var(--color-border)' : 'none', fontSize: 14, alignItems: 'center' }}>
+                            <span className="tl-title" style={{ fontWeight: 500 }}>{task.title}</span>
                             <span className="tl-status">
-                                <span className="badge badge-neutral">{task.status.replace("_", " ")}</span>
+                                <Badge variant="secondary" style={{ textTransform: 'capitalize' }}>{task.status.replace("_", " ")}</Badge>
                             </span>
-                            <span className="tl-priority">
+                            <span className="tl-priority" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--color-text-secondary)', textTransform: 'capitalize' }}>
                                 <span
                                     className="priority-dot"
-                                    style={{ background: priorityColors[task.priority] }}
+                                    style={{ width: 8, height: 8, borderRadius: '50%', background: priorityColors[task.priority] }}
                                 />
                                 {task.priority}
                             </span>
-                            <span className="tl-agent">
+                            <span className="tl-agent" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}>
                                 {task.agent ? (
                                     <>
                                         {task.agentIcon} {task.agent}
@@ -157,18 +164,18 @@ export default function TasksPage() {
                             </span>
                         </div>
                     ))}
-                </div>
+                </Card>
             )}
 
             {/* Timeline View */}
             {view === "timeline" && (
-                <div className="timeline-view glass-card">
-                    <div className="timeline-placeholder">
-                        <Clock size={40} />
-                        <h3>Timeline View</h3>
-                        <p>Gantt-style timeline coming soon. Tasks will be displayed along a time axis with dependencies.</p>
+                <Card className="timeline-view" padding="xl">
+                    <div className="timeline-placeholder" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 400 }}>
+                        <ClockIcon size={40} style={{ color: 'var(--color-text-tertiary)', marginBottom: 16 }} />
+                        <h3 style={{ marginBottom: 8 }}>Timeline View</h3>
+                        <p style={{ color: 'var(--color-text-secondary)', textAlign: 'center', maxWidth: 400 }}>Gantt-style timeline coming soon. Tasks will be displayed along a time axis with dependencies.</p>
                     </div>
-                </div>
+                </Card>
             )}
         </div>
     );

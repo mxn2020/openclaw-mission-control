@@ -10,6 +10,9 @@
 
 import type * as agentTemplates from "../agentTemplates.js";
 import type * as agents from "../agents.js";
+import type * as connections from "../connections.js";
+import type * as messages from "../messages.js";
+import type * as seed from "../seed.js";
 import type * as sessions from "../sessions.js";
 import type * as tasks from "../tasks.js";
 import type * as teams from "../teams.js";
@@ -23,6 +26,9 @@ import type {
 declare const fullApi: ApiFromModules<{
   agentTemplates: typeof agentTemplates;
   agents: typeof agents;
+  connections: typeof connections;
+  messages: typeof messages;
+  seed: typeof seed;
   sessions: typeof sessions;
   tasks: typeof tasks;
   teams: typeof teams;

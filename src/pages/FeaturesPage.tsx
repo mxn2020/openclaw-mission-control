@@ -2,6 +2,7 @@ import {
     Bot, GitBranch, MessageSquare, Shield, Zap, BarChart3,
     Users, Layout, Clock, Puzzle, Workflow, Database,
 } from "lucide-react";
+import { Card } from "@geenius-ui/react-css";
 import "./FeaturesPage.css";
 
 const featureGroups = [
@@ -106,11 +107,11 @@ export default function FeaturesPage() {
                         <h2>{group.title}</h2>
                         <div className="feature-group-grid">
                             {group.features.map((f) => (
-                                <div key={f.title} className="feat-card glass-card">
+                                <Card key={f.title} className="feat-card" padding="md">
                                     <div className="feat-card-icon">{f.icon}</div>
                                     <h3>{f.title}</h3>
                                     <p>{f.description}</p>
-                                </div>
+                                </Card>
                             ))}
                         </div>
                     </div>

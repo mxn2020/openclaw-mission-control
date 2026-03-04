@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Search, Filter, Sparkles } from "lucide-react";
+import { Button, Input, Card, Badge } from "@geenius-ui/react-css";
 import "./AgentsPage.css";
 
 // Template data (mirrors seed.ts)
@@ -37,9 +38,9 @@ export default function AgentsPage() {
                     <h1>Agents</h1>
                     <p>Build your team from templates or create custom agents</p>
                 </div>
-                <button className="btn btn-primary">
-                    <Plus size={16} /> New Agent
-                </button>
+                <Button variant="primary" icon={<Plus size={16} />}>
+                    New Agent
+                </Button>
             </div>
 
             {/* Tabs */}
@@ -60,64 +61,66 @@ export default function AgentsPage() {
 
             {/* Toolbar */}
             <div className="agents-toolbar">
-                <div className="search-input">
-                    <Search size={16} />
-                    <input
+                <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
+                    <Search size={16} style={{ position: "absolute", left: 12, color: "var(--color-text-tertiary)" }} />
+                    <Input
                         type="text"
                         placeholder="Search agents..."
-                        className="input"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
+                        style={{ paddingLeft: 34, width: 260 }}
                     />
                 </div>
                 <div className="filter-group">
                     <Filter size={14} />
                     {["all", "orchestrator", "specialist", "utility"].map((f) => (
-                        <button
+                        <Button
                             key={f}
-                            className={`btn btn-sm ${filter === f ? "btn-primary" : "btn-ghost"}`}
+                            variant={filter === f ? "primary" : "ghost"}
+                            size="sm"
                             onClick={() => setFilter(f)}
                         >
                             {f.charAt(0).toUpperCase() + f.slice(1)}
-                        </button>
+                        </Button>
                     ))}
                 </div>
             </div>
 
             {tab === "my_agents" ? (
-                <div className="agents-empty glass-card">
-                    <div className="agents-empty-icon">🤖</div>
-                    <h3>No agents yet</h3>
-                    <p>Create your first agent from a template or start from scratch.</p>
-                    <button className="btn btn-primary" onClick={() => setTab("templates")}>
-                        Browse Templates
-                    </button>
-                </div>
+                <Card className="agents-empty" padding="xl">
+                    <div className="agents-empty-icon" style={{ fontSize: 48, textAlign: 'center', marginBottom: 16 }}>🤖</div>
+                    <h3 style={{ textAlign: 'center', marginBottom: 8 }}>No agents yet</h3>
+                    <p style={{ textAlign: 'center', color: 'var(--color-text-secondary)', marginBottom: 24 }}>Create your first agent from a template or start from scratch.</p>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button variant="primary" onClick={() => setTab("templates")}>
+                            Browse Templates
+                        </Button>
+                    </div>
+                </Card>
             ) : (
                 <div className="agents-grid">
                     {filteredTemplates.map((t) => (
-                        <div key={t.name} className="agent-card glass-card">
-                            <div className="agent-card-header">
+                        <Card key={t.name} className="agent-card" padding="md">
+                            <div className="agent-card-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
                                 <div
                                     className="agent-card-icon"
-                                    style={{ background: `${t.color}18` }}
+                                    style={{ background: `${t.color}18`, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8, fontSize: 20 }}
                                 >
                                     <span>{t.icon}</span>
                                 </div>
                                 <span
-                                    className="badge"
-                                    style={{ background: `${t.color}18`, color: t.color }}
+                                    style={{ background: `${t.color}18`, color: t.color, padding: '4px 8px', borderRadius: 12, fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}
                                 >
                                     {t.category}
                                 </span>
                             </div>
-                            <h3>{t.name}</h3>
-                            <p className="agent-card-role">{t.role}</p>
-                            <p className="agent-card-desc">{t.description}</p>
-                            <button className="btn btn-secondary btn-sm agent-card-cta">
-                                <Plus size={14} /> Add to My Agents
-                            </button>
-                        </div>
+                            <h3 style={{ margin: '0 0 4px 0', fontSize: 16 }}>{t.name}</h3>
+                            <p className="agent-card-role" style={{ color: 'var(--color-text-secondary)', fontSize: 13, marginBottom: 12 }}>{t.role}</p>
+                            <p className="agent-card-desc" style={{ fontSize: 13, color: 'var(--color-text-tertiary)', marginBottom: 20, flex: 1 }}>{t.description}</p>
+                            <Button variant="outline" size="sm" icon={<Plus size={14} />} style={{ width: '100%', justifyContent: 'center' }}>
+                                Add to My Agents
+                            </Button>
+                        </Card>
                     ))}
                 </div>
             )}

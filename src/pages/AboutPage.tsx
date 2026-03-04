@@ -1,4 +1,5 @@
 import { Github, Heart, Rocket, Coffee } from "lucide-react";
+import { Button, Card } from "@geenius-ui/react-css";
 import "./AboutPage.css";
 
 export default function AboutPage() {
@@ -54,22 +55,22 @@ export default function AboutPage() {
                 <section className="about-section">
                     <h2>🛠️ Built With</h2>
                     <div className="tech-grid">
-                        <div className="tech-item glass-card">
+                        <Card className="tech-item" padding="md">
                             <strong>React + Vite</strong>
                             <span>Fast, modern frontend</span>
-                        </div>
-                        <div className="tech-item glass-card">
+                        </Card>
+                        <Card className="tech-item" padding="md">
                             <strong>Convex</strong>
                             <span>Real-time backend & database</span>
-                        </div>
-                        <div className="tech-item glass-card">
+                        </Card>
+                        <Card className="tech-item" padding="md">
                             <strong>TypeScript</strong>
                             <span>End-to-end type safety</span>
-                        </div>
-                        <div className="tech-item glass-card">
+                        </Card>
+                        <Card className="tech-item" padding="md">
                             <strong>OpenClaw</strong>
                             <span>AI agent infrastructure</span>
-                        </div>
+                        </Card>
                     </div>
                 </section>
 
@@ -78,17 +79,15 @@ export default function AboutPage() {
                         href="https://github.com/mxn2020/mission-control"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-secondary btn-lg"
                     >
-                        <Github size={18} /> Star on GitHub
+                        <Button variant="outline" size="lg" icon={<Github size={18} />}>Star on GitHub</Button>
                     </a>
                     <a
                         href="https://buymeacoffee.com/mxn2020"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-secondary btn-lg"
                     >
-                        <Coffee size={18} /> Buy Me a Coffee
+                        <Button variant="outline" size="lg" icon={<Coffee size={18} />}>Buy Me a Coffee</Button>
                     </a>
                 </section>
             </div>

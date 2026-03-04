@@ -11,6 +11,7 @@ import {
     Bot,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button, Card } from "@geenius-ui/react-css";
 import "./LandingPage.css";
 
 const features = [
@@ -95,18 +96,19 @@ export default function LandingPage() {
                         everything from a single dashboard. Open source with a managed
                         option at $9/mo.
                     </p>
-                    <div className="hero-actions animate-fade-in-up delay-3">
-                        <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Launch Dashboard
-                            <ArrowRight size={18} />
+                    <div className="hero-actions animate-fade-in-up delay-3" style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                        <Link to="/dashboard">
+                            <Button variant="primary" size="lg">
+                                Launch Dashboard
+                                <ArrowRight size={18} style={{ marginLeft: 8 }} />
+                            </Button>
                         </Link>
                         <a
                             href="https://github.com/mxn2020/mission-control"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-secondary btn-lg"
                         >
-                            View on GitHub
+                            <Button variant="outline" size="lg">View on GitHub</Button>
                         </a>
                     </div>
                 </div>
@@ -127,15 +129,16 @@ export default function LandingPage() {
                     </div>
                     <div className="features-grid">
                         {features.map((f, i) => (
-                            <div
+                            <Card
                                 key={f.title}
-                                className="feature-card glass-card animate-fade-in-up"
+                                className="feature-card animate-fade-in-up"
+                                padding="md"
                                 style={{ animationDelay: `${i * 0.1}s`, opacity: 0 }}
                             >
                                 <div className="feature-icon">{f.icon}</div>
                                 <h3>{f.title}</h3>
                                 <p>{f.description}</p>
-                            </div>
+                            </Card>
                         ))}
                     </div>
                 </div>
@@ -165,7 +168,7 @@ export default function LandingPage() {
             {/* ── Pricing Teaser ── */}
             <section className="section pricing-teaser-section">
                 <div className="section-inner">
-                    <div className="pricing-teaser glass-card">
+                    <Card className="pricing-teaser" padding="lg">
                         <div className="pricing-teaser-content">
                             <h2>
                                 Free to self-host.{" "}
@@ -176,12 +179,14 @@ export default function LandingPage() {
                                 infrastructure, or let us handle everything for $9/month.
                             </p>
                             <div className="pricing-teaser-actions">
-                                <Link to="/pricing" className="btn btn-primary">
-                                    View Pricing <ArrowRight size={16} />
+                                <Link to="/pricing">
+                                    <Button variant="primary">
+                                        View Pricing <ArrowRight size={16} style={{ marginLeft: 8 }} />
+                                    </Button>
                                 </Link>
                             </div>
                         </div>
-                    </div>
+                    </Card>
                 </div>
             </section>
 
@@ -195,8 +200,10 @@ export default function LandingPage() {
                             Join the open-source community and start orchestrating your agents
                             today.
                         </p>
-                        <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Get Started Free <ArrowRight size={18} />
+                        <Link to="/dashboard">
+                            <Button variant="primary" size="lg">
+                                Get Started Free <ArrowRight size={18} style={{ marginLeft: 8 }} />
+                            </Button>
                         </Link>
                     </div>
                 </div>

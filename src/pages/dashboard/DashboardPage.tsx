@@ -11,6 +11,7 @@ import {
     TrendingUp,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Card } from "@geenius-ui/react-css";
 import "./DashboardPage.css";
 
 // Demo data for the initial dashboard view
@@ -71,54 +72,56 @@ export default function DashboardPage() {
             {/* Stats */}
             <div className="stats-grid">
                 {stats.map((s) => (
-                    <div key={s.label} className="stat-card glass-card">
-                        <div className="stat-icon" style={{ background: `${s.color}20`, color: s.color }}>
+                    <Card key={s.label} className="stat-card" padding="md">
+                        <div className="stat-icon" style={{ background: `${s.color}20`, color: s.color, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8, marginBottom: 16 }}>
                             {s.icon}
                         </div>
-                        <div className="stat-value">{s.value}</div>
-                        <div className="stat-label">{s.label}</div>
-                    </div>
+                        <div className="stat-value" style={{ fontSize: 28, fontWeight: 700, fontFamily: 'var(--font-mono)', marginBottom: 4 }}>{s.value}</div>
+                        <div className="stat-label" style={{ color: 'var(--color-text-secondary)', fontSize: 13, fontWeight: 500 }}>{s.label}</div>
+                    </Card>
                 ))}
             </div>
 
             {/* Quick Actions */}
-            <section className="dashboard-section">
-                <h2>Quick Actions</h2>
-                <div className="quick-actions-grid">
+            <section className="dashboard-section" style={{ marginTop: 'var(--space-8)' }}>
+                <h2 style={{ marginBottom: 'var(--space-4)', fontSize: 18, fontWeight: 600 }}>Quick Actions</h2>
+                <div className="quick-actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-4)' }}>
                     {quickActions.map((action) => (
                         <Link
                             key={action.title}
                             to={action.to}
-                            className="quick-action-card glass-card"
+                            style={{ textDecoration: 'none', color: 'inherit' }}
                         >
-                            <div
-                                className="quick-action-icon"
-                                style={{ background: `${action.color}15`, color: action.color }}
-                            >
-                                {action.icon}
-                            </div>
-                            <div className="quick-action-content">
-                                <h3>{action.title}</h3>
-                                <p>{action.description}</p>
-                            </div>
-                            <ArrowRight size={16} className="quick-action-arrow" />
+                            <Card className="quick-action-card" padding="md" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)', transition: 'transform 0.2s ease', cursor: 'pointer' }}>
+                                <div
+                                    className="quick-action-icon"
+                                    style={{ background: `${action.color}15`, color: action.color, width: 48, height: 48, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+                                >
+                                    {action.icon}
+                                </div>
+                                <div className="quick-action-content" style={{ flex: 1 }}>
+                                    <h3 style={{ margin: '0 0 4px 0', fontSize: 16 }}>{action.title}</h3>
+                                    <p style={{ margin: 0, fontSize: 13, color: 'var(--color-text-tertiary)' }}>{action.description}</p>
+                                </div>
+                                <ArrowRight size={16} className="quick-action-arrow" style={{ color: 'var(--color-text-tertiary)' }} />
+                            </Card>
                         </Link>
                     ))}
                 </div>
             </section>
 
             {/* Recent Activity */}
-            <section className="dashboard-section">
-                <h2>Activity</h2>
-                <div className="activity-list glass-card">
+            <section className="dashboard-section" style={{ marginTop: 'var(--space-8)' }}>
+                <h2 style={{ marginBottom: 'var(--space-4)', fontSize: 18, fontWeight: 600 }}>Activity</h2>
+                <Card className="activity-list" padding="none">
                     {recentActivity.map((item, i) => (
-                        <div key={i} className={`activity-item ${item.type}`}>
-                            <div className="activity-icon">{item.icon}</div>
-                            <span className="activity-text">{item.text}</span>
-                            <span className="activity-time">{item.time}</span>
+                        <div key={i} className={`activity-item ${item.type}`} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', padding: 'var(--space-4)', borderBottom: i < recentActivity.length - 1 ? '1px solid var(--color-border)' : 'none' }}>
+                            <div className="activity-icon" style={{ color: item.type === 'warning' ? 'var(--color-warning)' : item.type === 'info' ? 'var(--color-info)' : 'var(--color-text-secondary)' }}>{item.icon}</div>
+                            <span className="activity-text" style={{ flex: 1, fontSize: 14 }}>{item.text}</span>
+                            <span className="activity-time" style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>{item.time}</span>
                         </div>
                     ))}
-                </div>
+                </Card>
             </section>
         </div>
     );

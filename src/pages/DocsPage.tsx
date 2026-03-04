@@ -1,5 +1,6 @@
 import { Terminal, Key, Rocket, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button, Card } from "@geenius-ui/react-css";
 import "./DocsPage.css";
 
 export default function DocsPage() {
@@ -15,20 +16,22 @@ export default function DocsPage() {
             </div>
 
             <div className="docs-content">
-                <aside className="docs-sidebar glass-card">
-                    <nav>
-                        <h4>Getting Started</h4>
-                        <a href="#prerequisites" className="active">Prerequisites</a>
-                        <a href="#installation">Installation</a>
-                        <a href="#configuration">Configuration</a>
-                        <a href="#first-team">First Agent Team</a>
-                        <h4>Concepts</h4>
-                        <a href="#agents">Agents & Templates</a>
-                        <a href="#orchestration">Orchestration</a>
-                        <a href="#tasks">Tasks & Workflows</a>
-                        <h4>Self-Hosting</h4>
-                        <a href="#self-host">Deploy Your Own</a>
-                    </nav>
+                <aside className="docs-sidebar">
+                    <Card padding="md">
+                        <nav>
+                            <h4 style={{ margin: 0, paddingBottom: 12 }}>Getting Started</h4>
+                            <a href="#prerequisites" className="active">Prerequisites</a>
+                            <a href="#installation">Installation</a>
+                            <a href="#configuration">Configuration</a>
+                            <a href="#first-team">First Agent Team</a>
+                            <h4 style={{ margin: 0, paddingBottom: 12, paddingTop: 16 }}>Concepts</h4>
+                            <a href="#agents">Agents & Templates</a>
+                            <a href="#orchestration">Orchestration</a>
+                            <a href="#tasks">Tasks & Workflows</a>
+                            <h4 style={{ margin: 0, paddingBottom: 12, paddingTop: 16 }}>Self-Hosting</h4>
+                            <a href="#self-host">Deploy Your Own</a>
+                        </nav>
+                    </Card>
                 </aside>
 
                 <main className="docs-main">
@@ -114,8 +117,8 @@ npm install`}</code></pre>
                     </section>
 
                     <div className="docs-cta">
-                        <Link to="/dashboard" className="btn btn-primary btn-lg">
-                            Launch Dashboard <ArrowRight size={18} />
+                        <Link to="/dashboard">
+                            <Button variant="primary" size="lg">Launch Dashboard <ArrowRight size={18} /></Button>
                         </Link>
                     </div>
                 </main>

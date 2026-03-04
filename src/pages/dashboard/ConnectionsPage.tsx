@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plug, Key, Server, Save, CheckCircle } from "lucide-react";
+import { Button, Input, Card } from "@geenius-ui/react-css";
 import "./ConnectionsPage.css";
 
 export default function ConnectionsPage() {
@@ -20,115 +21,107 @@ export default function ConnectionsPage() {
             </div>
 
             {/* OpenClaw */}
-            <section className="connection-section glass-card">
-                <div className="connection-header">
-                    <Server size={20} />
-                    <h2>OpenClaw Instance</h2>
+            <Card className="connection-section" padding="lg" style={{ marginBottom: 'var(--space-6)' }}>
+                <div className="connection-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-3)' }}>
+                    <Server size={20} style={{ color: 'var(--color-text-secondary)' }} />
+                    <h2 style={{ margin: 0 }}>OpenClaw Instance</h2>
                 </div>
-                <p className="connection-desc">
+                <p className="connection-desc" style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-6)' }}>
                     Connect your OpenClaw instance to enable agent execution. You need the
                     instance URL and authentication token.
                 </p>
-                <div className="connection-fields">
+                <div className="connection-fields" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                     <div className="field-group">
-                        <label>Instance URL</label>
-                        <input
+                        <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Instance URL</label>
+                        <Input
                             type="url"
-                            className="input"
                             placeholder="http://localhost:8004 or https://your-server.com:17000"
                         />
                     </div>
                     <div className="field-group">
-                        <label>Authentication Token</label>
-                        <input
+                        <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Authentication Token</label>
+                        <Input
                             type="password"
-                            className="input"
                             placeholder="Your OpenClaw gateway token"
                         />
                     </div>
                 </div>
-            </section>
+            </Card>
 
             {/* LLM Keys */}
-            <section className="connection-section glass-card">
-                <div className="connection-header">
-                    <Key size={20} />
-                    <h2>LLM API Keys</h2>
+            <Card className="connection-section" padding="lg" style={{ marginBottom: 'var(--space-6)' }}>
+                <div className="connection-header" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-3)' }}>
+                    <Key size={20} style={{ color: 'var(--color-text-secondary)' }} />
+                    <h2 style={{ margin: 0 }}>LLM API Keys</h2>
                 </div>
-                <p className="connection-desc">
+                <p className="connection-desc" style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-6)' }}>
                     Provide at least one API key. Your agents will use these to communicate
                     with large language models.
                 </p>
-                <div className="connection-fields">
+                <div className="connection-fields" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                     <div className="field-group">
-                        <label>OpenAI API Key</label>
-                        <input
+                        <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>OpenAI API Key</label>
+                        <Input
                             type="password"
-                            className="input"
                             placeholder="sk-..."
                         />
                     </div>
                     <div className="field-group">
-                        <label>Anthropic API Key</label>
-                        <input
+                        <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Anthropic API Key</label>
+                        <Input
                             type="password"
-                            className="input"
                             placeholder="sk-ant-..."
                         />
                     </div>
                     <div className="field-group">
-                        <label>Google AI API Key</label>
-                        <input
+                        <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Google AI API Key</label>
+                        <Input
                             type="password"
-                            className="input"
                             placeholder="AIza..."
                         />
                     </div>
                 </div>
 
-                <details className="custom-provider">
-                    <summary>Custom OpenAI-Compatible Provider</summary>
-                    <div className="connection-fields" style={{ marginTop: "var(--space-4)" }}>
+                <details className="custom-provider" style={{ marginTop: 'var(--space-6)', padding: 'var(--space-4)', background: 'var(--color-bg-secondary)', borderRadius: 'var(--radius-sm)' }}>
+                    <summary style={{ cursor: 'pointer', fontWeight: 500, userSelect: 'none' }}>Custom OpenAI-Compatible Provider</summary>
+                    <div className="connection-fields" style={{ marginTop: "var(--space-4)", display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                         <div className="field-group">
-                            <label>Provider Name</label>
-                            <input
+                            <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Provider Name</label>
+                            <Input
                                 type="text"
-                                className="input"
                                 placeholder="e.g. Together AI, Groq, Fireworks..."
                             />
                         </div>
                         <div className="field-group">
-                            <label>Base URL</label>
-                            <input
+                            <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>Base URL</label>
+                            <Input
                                 type="url"
-                                className="input"
                                 placeholder="https://api.together.xyz/v1"
                             />
                         </div>
                         <div className="field-group">
-                            <label>API Key</label>
-                            <input
+                            <label style={{ display: 'block', marginBottom: 8, fontWeight: 500, fontSize: 13 }}>API Key</label>
+                            <Input
                                 type="password"
-                                className="input"
                                 placeholder="Your API key"
                             />
                         </div>
                     </div>
                 </details>
-            </section>
+            </Card>
 
-            <div className="connection-actions">
-                <button className="btn btn-primary btn-lg" onClick={handleSave}>
+            <div className="connection-actions" style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'var(--space-6)' }}>
+                <Button variant="primary" size="lg" onClick={handleSave} style={{ width: 200, justifyContent: 'center' }}>
                     {saved ? (
                         <>
-                            <CheckCircle size={16} /> Saved!
+                            <CheckCircle size={16} style={{ marginRight: 8 }} /> Saved!
                         </>
                     ) : (
                         <>
-                            <Save size={16} /> Save Connections
+                            <Save size={16} style={{ marginRight: 8 }} /> Save Connections
                         </>
                     )}
-                </button>
+                </Button>
             </div>
         </div>
     );
