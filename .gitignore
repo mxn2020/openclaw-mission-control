@@ -37,3 +37,7 @@ Thumbs.db
 
 # Convex
 .convex/
+
+# Added by AI Agent
+.env.*
+!.env.example
