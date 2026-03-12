@@ -1,0 +1,16 @@
+name: mission-control
+project_scope: main
+project_type: standalone
+description: Centralized mission control dashboard for all projects
+tier: prototype
+lane: open-source
+priority: medium
+oss: true
+stack: ["typescript", "react", "vite", "convex"]
+repo: "https://github.com/mxn2020/openclaw-mission-control"
+deploy_url: null
+last_active: 2026-03-11
+tags: ["mission-control", "convex", "react", "open-source", "ai-tools"]
+notes: null
+id: null
+category: oss-tool
