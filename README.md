@@ -14,7 +14,7 @@ Build teams of AI agents, orchestrate complex tasks, and monitor everything from
 - **💬 Agent Chat** — Launch chat sessions with any agent, review outputs, iterate on results
 - **🔌 Bring Your Own Keys** — Connect your OpenClaw instance + LLM API keys (OpenAI, Anthropic, etc.)
 - **⚡ Real-time Sync** — Powered by Convex — instant updates across all clients
-- **🌐 Open Source** — MIT licensed, self-host for free
+- **🌐 Open Source** — Apache-2.0 licensed, self-host for free
 
 ## 🚀 Quick Start
 
@@ -74,7 +74,7 @@ Contributions welcome! Please read our contributing guidelines before submitting
 
 ## 📄 License
 
-MIT © [AVS Media](https://github.com/mxn2020)
+Apache-2.0 © [AVS Media](https://github.com/mxn2020)
 
 ---
 
