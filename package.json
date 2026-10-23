@@ -36,7 +36,7 @@
   },
   "description": "Centralized mission control dashboard for all projects",
   "author": "Mehdi Nabhani",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "mission",
     "control",

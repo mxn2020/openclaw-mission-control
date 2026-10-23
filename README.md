@@ -3,7 +3,7 @@
 > Open-source AI agent orchestration dashboard.
 
 [![CI](https://github.com/mxn2020/mission-control/actions/workflows/ci.yml/badge.svg)](https://github.com/mxn2020/mission-control/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 
 Build teams of AI agents, orchestrate complex tasks, and monitor everything from a single dashboard.
 
@@ -65,7 +65,7 @@ mission-control/
 │   ├── App.tsx          # Router
 │   └── main.tsx         # Entry point
 ├── .github/workflows/   # CI/CD
-└── LICENSE              # MIT
+└── LICENSE              # Apache-2.0
 ```
 
 ## 🤝 Contributing
@@ -79,3 +79,7 @@ MIT © [Mehdi Nabhani](https://github.com/mxn2020)
 ---
 
 **[⭐ Star on GitHub](https://github.com/mxn2020/mission-control)** · **[☕ Buy Me a Coffee](https://buymeacoffee.com/mxn2020)**
+
+---
+
+> **License note:** As of 2026-10-23 this project is licensed under the Apache License 2.0 (previously MIT). Versions released before this change remain available under MIT to those who received them.
